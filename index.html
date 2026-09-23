@@ -1,1 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>ColorPulse | Colour Prediction Community</title>
+  <meta name="description"
+        content="Join ColorPulse on Telegram for colour prediction discussions, updates and community insights.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0, 255, 170, .12), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(120, 70, 255, .14), transparent 30%),
+        #07080d;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: #00e5a0;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      color: #07110e;
+      background: #00e5a0;
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,229,160,.25);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(0,229,160,.35);
+      background: rgba(0,229,160,.08);
+      color: #00e5a0;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: .98;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    h1 .green {
+      color: #00e5a0;
+    }
+
+    h1 .purple {
+      color: #8f6cff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #a8adb9;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .primary {
+      text-decoration: none;
+      background: linear-gradient(135deg, #00e5a0, #00b97f);
+      color: #04100c;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0,229,160,.25);
+    }
+
+    .secondary {
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid #292d38;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* COLOUR BALLS */
+
+    .balls {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .ball {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      box-shadow: 0 0 35px rgba(255,255,255,.08);
+    }
+
+    .red {
+      background: #ff365c;
+      box-shadow: 0 0 35px rgba(255,54,92,.35);
+    }
+
+    .greenBall {
+      background: #00e58f;
+      box-shadow: 0 0 35px rgba(0,229,143,.35);
+    }
+
+    .violet {
+      background: #895cff;
+      box-shadow: 0 0 35px rgba(137,92,255,.35);
+    }
+
+    /* FEATURES */
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #8f95a3;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.035);
+      border: 1px solid #20242f;
+      border-radius: 20px;
+      padding: 30px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #343a49;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      background: rgba(0,229,160,.1);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #8f95a3;
+      line-height: 1.6;
+    }
+
+    /* TELEGRAM BOX */
+
+    .telegram-box {
+      text-align: center;
+      padding: 65px 25px;
+      border-radius: 28px;
+      border: 1px solid #252a36;
+      background:
+        radial-gradient(circle at center, rgba(0,229,160,.09), transparent 55%),
+        rgba(255,255,255,.025);
+    }
+
+    .telegram-box h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .telegram-box p {
+      max-width: 600px;
+      margin: auto;
+      color: #9298a6;
+      line-height: 1.7;
+    }
+
+    /* DISCLAIMER */
+
+    .disclaimer {
+      margin-top: 35px;
+      padding: 22px;
+      border-radius: 15px;
+      background: rgba(255,193,7,.05);
+      border: 1px solid rgba(255,193,7,.15);
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #1b1e27;
+      padding: 30px 0;
+      text-align: center;
+      color: #666c78;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        height: 70px;
+      }
+
+      .nav-btn {
+        padding: 9px 15px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 600px;
+        padding-top: 40px;
+      }
+
+      .balls {
+        margin-top: 45px;
+      }
+
+      .ball {
+        width: 52px;
+        height: 52px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .telegram-box h2 {
+        font-size: 31px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- NAVBAR -->
+    <nav>
+      <div class="logo">
+        Color<span>Pulse</span>
+      </div>
+
+      <!-- CHANGE TELEGRAM LINK -->
+      <a class="nav-btn"
+         href="https://t.me/+mp2RxWB-zbFlMDY1"
+         target="_blank">
+        Join Telegram
+      </a>
+    </nav>
+
+
+    <!-- HERO -->
+    <main class="hero">
+
+      <div>
+
+        <div class="badge">
+          ● LIVE COLOUR PREDICTION COMMUNITY
+        </div>
+
+        <h1>
+          Predict.<br>
+          <span class="green">Analyze.</span>
+          <span class="purple">Play.</span>
+        </h1>
+
+        <p>
+          Join our Telegram community for colour prediction discussions,
+          round updates, educational insights and community conversations.
+        </p>
+
+        <div class="buttons">
+
+          <!-- CHANGE TELEGRAM LINK -->
+          <a class="primary"
+             href="https://t.me/+mp2RxWB-zbFlMDY1"
+             target="_blank">
+            🚀 Join Telegram Channel
+          </a>
+
+          <a class="secondary" href="#features">
+            Explore Features
+          </a>
+
+        </div>
+
+        <div class="balls">
+          <div class="ball red"></div>
+          <div class="ball greenBall"></div>
+          <div class="ball violet"></div>
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- FEATURES -->
+    <section id="features">
+
+      <div class="section-title">
+        <h2>What's Inside?</h2>
+        <p>Everything you need in one community.</p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Market Insights</h3>
+          <p>
+            Follow community discussions and analysis around
+            colour prediction rounds.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Quick Updates</h3>
+          <p>
+            Get important channel updates and round-related
+            information directly through Telegram.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>Active Community</h3>
+          <p>
+            Connect with other members and participate in
+            colour prediction discussions.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TELEGRAM CTA -->
+    <section>
+
+      <div class="telegram-box">
+
+        <h2>Join Our Telegram</h2>
+
+        <p>
+          Stay connected with the community and receive the latest
+          updates directly on Telegram.
+        </p>
+
+        <div class="buttons">
+
+          <!-- CHANGE TELEGRAM LINK -->
+          <a class="primary"
+             href="https://t.me/+mp2RxWB-zbFlMDY1"
+             target="_blank">
+            ✈️ Join Channel
+          </a>
+
+        </div>
+
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong>
+          Colour prediction involves financial risk. Predictions are
+          not guaranteed and past results do not guarantee future outcomes.
+          Participate responsibly and only use money you can afford to lose.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+      © 2026 ColorPulse. All rights reserved.
+    </footer>
+
+  </div>
+
+</body>
+</html>
